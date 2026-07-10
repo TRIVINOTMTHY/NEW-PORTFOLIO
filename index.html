@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dainiel Timothy Trivino — Front-End Developer</title>
+<meta name="description" content="Portfolio of Dainiel Timothy Trivino — Front-End Developer specializing in responsive, interactive web experiences.">
+
+<!-- Tailwind CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!-- Icons -->
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+<!-- Shared styles -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="noise antialiased overflow-x-hidden">
+<!-- ============ NAV ============ -->
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50">
+  <div class="max-w-6xl mx-auto px-6 md:px-10 flex items-center justify-between h-16">
+    <a href="index.html" class="font-display font-semibold text-lg tracking-tight flex items-center gap-2">
+      <svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true">
+        <circle cx="14" cy="14" r="13" fill="#12142a" stroke="var(--mint)" stroke-width="1"/>
+        <text x="14" y="19" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-size="12" font-weight="700" fill="#f2f1f8">DT</text>
+      </svg>
+      timothy trivino<span style="color:var(--mint)">.</span>dev
+    </a>
+    <div class="hidden md:flex items-center gap-8 font-mono text-sm">
+      <a href="index.html" class="nav-link active font-mono">home()</a>
+      <a href="about.html" class="nav-link font-mono">about()</a>
+      <a href="skills.html" class="nav-link font-mono">skills()</a>
+      <a href="projects.html" class="nav-link font-mono">projects()</a>
+      <a href="certifications.html" class="nav-link font-mono">certs()</a>
+      <a href="contact.html" class="nav-link font-mono">contact()</a>
+    </div>
+    <a href="contact.html" class="hidden md:inline-flex btn-primary rounded-full px-5 py-2 text-sm font-medium">
+      Let's talk
+    </a>
+    <button id="menuBtn" class="md:hidden text-[var(--text)]" aria-label="Open menu">
+      <i data-lucide="menu" class="w-6 h-6"></i>
+    </button>
+  </div>
+  <div id="mobileMenu" class="md:hidden hidden flex-col gap-1 px-6 pb-6 font-mono text-sm" style="background: rgba(11,12,20,0.96); backdrop-filter: blur(14px);">
+    <a href="index.html" class="py-3 border-b border-[var(--line)] text-[var(--mint)]">home()</a>
+    <a href="about.html" class="py-3 border-b border-[var(--line)]">about()</a>
+    <a href="skills.html" class="py-3 border-b border-[var(--line)]">skills()</a>
+    <a href="projects.html" class="py-3 border-b border-[var(--line)]">projects()</a>
+    <a href="certifications.html" class="py-3 border-b border-[var(--line)]">certs()</a>
+    <a href="contact.html" class="py-3 border-b border-[var(--line)]">contact()</a>
+  </div>
+</nav>
+<!-- ============ HERO ============ -->
+<section class="relative min-h-screen flex items-center pt-24 pb-16 overflow-hidden">
+  <div class="absolute inset-0 grid-fade opacity-60"></div>
+  <div class="orb absolute top-24 -left-20 w-72 h-72 rounded-full blur-3xl" style="background: radial-gradient(circle, var(--violet-soft), transparent 70%)"></div>
+  <div class="orb orb-delay absolute bottom-10 right-0 w-96 h-96 rounded-full blur-3xl" style="background: radial-gradient(circle, var(--mint-soft), transparent 70%)"></div>
+
+  <div class="relative z-10 max-w-6xl mx-auto px-6 md:px-10 w-full grid md:grid-cols-[1.15fr,0.85fr] gap-14 items-center">
+    <div>
+      <p class="eyebrow mb-5 reveal">// front-end developer &middot; philippines</p>
+      <h1 class="font-display font-semibold text-4xl sm:text-5xl lg:text-6xl leading-[1.08] mb-6 reveal" style="transition-delay:.05s">
+        Building web experiences<br class="hidden sm:block">
+        that feel <span style="color:var(--mint)">alive.</span>
+      </h1>
+      <p class="text-[var(--muted)] text-lg max-w-xl mb-8 reveal" style="transition-delay:.1s">
+        I'm Dainiel Timothy Trivino &mdash; a 4th-year BSIT student at Holy Angel University who designs
+        and builds responsive, animated interfaces with HTML, CSS, JavaScript, and WordPress. Every
+        project starts mobile-first and ends pixel-obsessed.
+      </p>
+
+      <div class="font-mono text-sm md:text-base mb-10 reveal" style="transition-delay:.15s">
+        <span style="color:var(--violet)">const</span>
+        <span style="color:var(--text)"> currentRole </span>
+        <span style="color:var(--muted)">= </span>
+        <span id="typewriter" style="color:var(--amber)"></span><span class="cursor"></span>
+      </div>
+
+      <div class="flex flex-wrap gap-4 reveal" style="transition-delay:.2s">
+        <a href="projects.html" class="btn-primary rounded-full px-6 py-3 text-sm font-medium inline-flex items-center gap-2">
+          View my work <i data-lucide="arrow-down-right" class="w-4 h-4"></i>
+        </a>
+        <a href="contact.html" class="btn-ghost rounded-full px-6 py-3 text-sm font-medium inline-flex items-center gap-2">
+          Get in touch <i data-lucide="mail" class="w-4 h-4"></i>
+        </a>
+      </div>
+    </div>
+
+    <div class="reveal" style="transition-delay:.1s">
+      <div class="win-card mx-auto max-w-sm">
+        <div class="win-bar">
+          <span class="win-dot" style="background:#ff5f57"></span>
+          <span class="win-dot" style="background:#febc2e"></span>
+          <span class="win-dot" style="background:#28c840"></span>
+          <span class="font-mono text-xs text-[var(--muted)] ml-2">timothy.jpg</span>
+        </div>
+        <img src="images/timothy.jpg" alt="Dainiel Timothy Trivino" class="w-full h-full object-cover aspect-[4/5]">
+      </div>
+    </div>
+  </div>
+
+  <a href="about.html" class="absolute bottom-8 left-1/2 -translate-x-1/2 text-[var(--muted)] animate-bounce" aria-label="Scroll to about">
+    <i data-lucide="chevron-down" class="w-6 h-6"></i>
+  </a>
+</section>
+
+<!-- ============ QUICK HIGHLIGHTS ============ -->
+<section class="relative py-24 border-t" style="border-color:var(--line)">
+  <div class="max-w-6xl mx-auto px-6 md:px-10">
+    <div class="grid sm:grid-cols-3 gap-6">
+      <a href="about.html" class="win-card p-8 block reveal" style="transition-delay:.05s">
+        <i data-lucide="user" class="w-6 h-6 mb-4" style="color:var(--mint)"></i>
+        <h3 class="font-display font-semibold text-lg mb-2">About Me</h3>
+        <p class="text-sm text-[var(--muted)] mb-4">BSIT student at Holy Angel University, based in Pampanga, PH.</p>
+        <span class="font-mono text-xs inline-flex items-center gap-1" style="color:var(--mint)">Read more <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></span>
+      </a>
+      <a href="skills.html" class="win-card p-8 block reveal" style="transition-delay:.1s">
+        <i data-lucide="wrench" class="w-6 h-6 mb-4" style="color:var(--violet)"></i>
+        <h3 class="font-display font-semibold text-lg mb-2">Skills</h3>
+        <p class="text-sm text-[var(--muted)] mb-4">HTML5, CSS3, JavaScript, WordPress, and the tools I build with daily.</p>
+        <span class="font-mono text-xs inline-flex items-center gap-1" style="color:var(--mint)">See the stack <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></span>
+      </a>
+      <a href="projects.html" class="win-card p-8 block reveal" style="transition-delay:.15s">
+        <i data-lucide="folder-git-2" class="w-6 h-6 mb-4" style="color:var(--amber)"></i>
+        <h3 class="font-display font-semibold text-lg mb-2">Projects</h3>
+        <p class="text-sm text-[var(--muted)] mb-4">Three live builds &mdash; from food ordering to a WordPress blog.</p>
+        <span class="font-mono text-xs inline-flex items-center gap-1" style="color:var(--mint)">View the work <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="relative py-28 border-t" style="border-color:var(--line)">
+  <div class="max-w-4xl mx-auto px-6 md:px-10 text-center">
+    <p class="eyebrow mb-4 reveal">// let's talk</p>
+    <h2 class="font-display font-semibold text-3xl md:text-5xl mb-6 reveal" style="transition-delay:.05s">
+      Got a project<br class="hidden sm:block"> worth clicking on?
+    </h2>
+    <p class="text-[var(--muted)] max-w-lg mx-auto mb-10 reveal" style="transition-delay:.1s">
+      I'm open to internships, freelance work, and collaborations. My inbox is open.
+    </p>
+    <a href="contact.html" class="btn-primary inline-flex items-center gap-2 rounded-full px-8 py-4 font-medium reveal" style="transition-delay:.15s">
+      <i data-lucide="mail" class="w-4 h-4"></i> Get In Touch
+    </a>
+  </div>
+</section>
+<!-- ============ FOOTER ============ -->
+<footer class="border-t py-8" style="border-color:var(--line)">
+  <div class="max-w-6xl mx-auto px-6 md:px-10 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <p class="font-mono text-xs text-[var(--muted)]">&copy; <span id="year"></span> Dainiel Timothy Trivino. All rights reserved.</p>
+    <div class="flex items-center gap-4">
+      <a href="index.html" aria-label="Home" class="social-btn w-9 h-9 rounded-full border flex items-center justify-center" style="border-color:var(--line)">
+        <svg width="18" height="18" viewBox="0 0 28 28" aria-hidden="true">
+          <circle cx="14" cy="14" r="13" fill="#12142a" stroke="var(--mint)" stroke-width="1"/>
+          <text x="14" y="19" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-size="12" font-weight="700" fill="#f2f1f8">DT</text>
+        </svg>
+      </a>
+      <a href="https://www.facebook.com/dainiel.trivino/" target="_blank" rel="noopener" aria-label="Facebook" class="social-btn w-9 h-9 rounded-full border flex items-center justify-center" style="border-color:var(--line)">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/dainiel-timothy-trivino-508b88357/" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-btn w-9 h-9 rounded-full border flex items-center justify-center" style="border-color:var(--line)">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      </a>
+      <a href="https://github.com/TRIVINOTMTHY" target="_blank" rel="noopener" aria-label="GitHub" class="social-btn w-9 h-9 rounded-full border flex items-center justify-center" style="border-color:var(--line)">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+      </a>
+      <a href="mailto:trivinodainieltimothy@gmail.com" aria-label="Email" class="social-btn w-9 h-9 rounded-full border flex items-center justify-center" style="border-color:var(--line)">
+        <i data-lucide="mail" class="w-4 h-4"></i>
+      </a>
+    </div>
+    <p class="font-mono text-xs text-[var(--muted)]">built with html &middot; css &middot; tailwind &middot; js</p>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>
