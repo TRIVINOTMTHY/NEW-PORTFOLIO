@@ -19,8 +19,20 @@
 
 <!-- Shared styles -->
 <link rel="stylesheet" href="style.css">
+
+<!-- Prevent theme flash -->
+<script>
+  (function(){
+    var t = localStorage.getItem('theme');
+    if (t === 'light' || (!t && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+      document.documentElement.setAttribute('data-theme','light');
+    }
+  })();
+</script>
 </head>
-<body class="noise antialiased overflow-x-hidden">
+<body class="noise scanlines antialiased overflow-x-hidden">
+<div id="scrollProgress"></div>
+<div id="cursorGlow"></div>
 <!-- ============ NAV ============ -->
 <nav id="navbar" class="fixed top-0 left-0 right-0 z-50">
   <div class="max-w-6xl mx-auto px-6 md:px-10 flex items-center justify-between h-16">
@@ -39,12 +51,18 @@
       <a href="certifications.html" class="nav-link font-mono">certs()</a>
       <a href="contact.html" class="nav-link font-mono">contact()</a>
     </div>
-    <a href="contact.html" class="hidden md:inline-flex btn-primary rounded-full px-5 py-2 text-sm font-medium">
-      Let's talk
-    </a>
-    <button id="menuBtn" class="md:hidden text-[var(--text)]" aria-label="Open menu">
-      <i data-lucide="menu" class="w-6 h-6"></i>
-    </button>
+    <div class="hidden md:flex items-center gap-4">
+      <button class="theme-toggle" aria-label="Toggle light and dark mode"><span class="knob"></span></button>
+      <a href="contact.html" class="btn-primary rounded-full px-5 py-2 text-sm font-medium">
+        Let's talk
+      </a>
+    </div>
+    <div class="flex items-center gap-3 md:hidden">
+      <button class="theme-toggle" aria-label="Toggle light and dark mode"><span class="knob"></span></button>
+      <button id="menuBtn" class="text-[var(--text)]" aria-label="Open menu">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+    </div>
   </div>
   <div id="mobileMenu" class="md:hidden hidden flex-col gap-1 px-6 pb-6 font-mono text-sm" style="background: rgba(11,12,20,0.96); backdrop-filter: blur(14px);">
     <a href="index.html" class="py-3 border-b border-[var(--line)] text-[var(--mint)]">home()</a>
@@ -66,7 +84,7 @@
       <p class="eyebrow mb-5 reveal">// front-end developer &middot; philippines</p>
       <h1 class="font-display font-semibold text-4xl sm:text-5xl lg:text-6xl leading-[1.08] mb-6 reveal" style="transition-delay:.05s">
         Building web experiences<br class="hidden sm:block">
-        that feel <span style="color:var(--mint)">alive.</span>
+        that feel <span class="glitch" data-text="alive." style="color:var(--mint)">alive.</span>
       </h1>
       <p class="text-[var(--muted)] text-lg max-w-xl mb-8 reveal" style="transition-delay:.1s">
         I'm Dainiel Timothy Trivino &mdash; a 4th-year BSIT student at Holy Angel University who designs
@@ -91,7 +109,7 @@
       </div>
     </div>
 
-    <div class="reveal" style="transition-delay:.1s">
+    <div class="reveal-scale" style="transition-delay:.1s">
       <div class="win-card mx-auto max-w-sm">
         <div class="win-bar">
           <span class="win-dot" style="background:#ff5f57"></span>
@@ -113,7 +131,7 @@
 <section class="relative py-24 border-t" style="border-color:var(--line)">
   <div class="max-w-6xl mx-auto px-6 md:px-10">
     <div class="grid sm:grid-cols-3 gap-6">
-      <a href="about.html" class="win-card p-8 block reveal" style="transition-delay:.05s">
+      <a href="about.html" class="win-card p-8 block reveal-left" style="transition-delay:.05s">
         <i data-lucide="user" class="w-6 h-6 mb-4" style="color:var(--mint)"></i>
         <h3 class="font-display font-semibold text-lg mb-2">About Me</h3>
         <p class="text-sm text-[var(--muted)] mb-4">BSIT student at Holy Angel University, based in Pampanga, PH.</p>
@@ -125,7 +143,7 @@
         <p class="text-sm text-[var(--muted)] mb-4">HTML5, CSS3, JavaScript, WordPress, and the tools I build with daily.</p>
         <span class="font-mono text-xs inline-flex items-center gap-1" style="color:var(--mint)">See the stack <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></span>
       </a>
-      <a href="projects.html" class="win-card p-8 block reveal" style="transition-delay:.15s">
+      <a href="projects.html" class="win-card p-8 block reveal-right" style="transition-delay:.15s">
         <i data-lucide="folder-git-2" class="w-6 h-6 mb-4" style="color:var(--amber)"></i>
         <h3 class="font-display font-semibold text-lg mb-2">Projects</h3>
         <p class="text-sm text-[var(--muted)] mb-4">Three live builds &mdash; from food ordering to a WordPress blog.</p>
