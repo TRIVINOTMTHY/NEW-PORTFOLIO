@@ -19,8 +19,20 @@
 
 <!-- Shared styles -->
 <link rel="stylesheet" href="style.css">
+
+<!-- Prevent theme flash -->
+<script>
+  (function(){
+    var t = localStorage.getItem('theme');
+    if (t === 'light' || (!t && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+      document.documentElement.setAttribute('data-theme','light');
+    }
+  })();
+</script>
 </head>
-<body class="noise antialiased overflow-x-hidden">
+<body class="noise scanlines antialiased overflow-x-hidden">
+<div id="scrollProgress"></div>
+<div id="cursorGlow"></div>
 <!-- ============ NAV ============ -->
 <nav id="navbar" class="fixed top-0 left-0 right-0 z-50">
   <div class="max-w-6xl mx-auto px-6 md:px-10 flex items-center justify-between h-16">
@@ -39,12 +51,18 @@
       <a href="certifications.html" class="nav-link font-mono">certs()</a>
       <a href="contact.html" class="nav-link font-mono">contact()</a>
     </div>
-    <a href="contact.html" class="hidden md:inline-flex btn-primary rounded-full px-5 py-2 text-sm font-medium">
-      Let's talk
-    </a>
-    <button id="menuBtn" class="md:hidden text-[var(--text)]" aria-label="Open menu">
-      <i data-lucide="menu" class="w-6 h-6"></i>
-    </button>
+    <div class="hidden md:flex items-center gap-4">
+      <button class="theme-toggle" aria-label="Toggle light and dark mode"><span class="knob"></span></button>
+      <a href="contact.html" class="btn-primary rounded-full px-5 py-2 text-sm font-medium">
+        Let's talk
+      </a>
+    </div>
+    <div class="flex items-center gap-3 md:hidden">
+      <button class="theme-toggle" aria-label="Toggle light and dark mode"><span class="knob"></span></button>
+      <button id="menuBtn" class="text-[var(--text)]" aria-label="Open menu">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+    </div>
   </div>
   <div id="mobileMenu" class="md:hidden hidden flex-col gap-1 px-6 pb-6 font-mono text-sm" style="background: rgba(11,12,20,0.96); backdrop-filter: blur(14px);">
     <a href="index.html" class="py-3 border-b border-[var(--line)]">home()</a>
@@ -63,7 +81,7 @@
   <div class="relative z-10 max-w-6xl mx-auto px-6 md:px-10">
     <p class="eyebrow mb-4 reveal">// projects</p>
     <h1 class="font-display font-semibold text-4xl sm:text-5xl lg:text-6xl leading-[1.08] mb-4 reveal" style="transition-delay:.05s">
-      Things I've<br><em class="not-italic" style="color:var(--mint)">built.</em>
+      Things I've<br><em class="glitch not-italic" data-text="built." style="color:var(--mint)">built.</em>
     </h1>
     <p class="text-[var(--muted)] text-lg max-w-2xl reveal" style="transition-delay:.1s">A few live projects &mdash; from ordering food to browsing games to running a full WordPress blog.</p>
   </div>
@@ -73,7 +91,7 @@
 <section class="relative py-28 border-t" style="border-color:var(--line)">
   <div class="max-w-6xl mx-auto px-6 md:px-10">
     <div class="grid md:grid-cols-3 gap-8">
-      <article class="win-card flex flex-col reveal" style="transition-delay:0.05s">
+      <article class="win-card flex flex-col reveal-scale" style="transition-delay:0.05s">
         <div class="win-bar">
           <span class="win-dot" style="background:#ff5f57"></span>
           <span class="win-dot" style="background:#febc2e"></span>
@@ -108,7 +126,7 @@
           </div>
         </div>
       </article>
-      <article class="win-card flex flex-col reveal" style="transition-delay:0.1s">
+      <article class="win-card flex flex-col reveal-scale" style="transition-delay:0.1s">
         <div class="win-bar">
           <span class="win-dot" style="background:#ff5f57"></span>
           <span class="win-dot" style="background:#febc2e"></span>
@@ -142,7 +160,7 @@
           </div>
         </div>
       </article>
-      <article class="win-card flex flex-col reveal" style="transition-delay:0.15s">
+      <article class="win-card flex flex-col reveal-scale" style="transition-delay:0.15s">
         <div class="win-bar">
           <span class="win-dot" style="background:#ff5f57"></span>
           <span class="win-dot" style="background:#febc2e"></span>
