@@ -1,7 +1,35 @@
 document.addEventListener('DOMContentLoaded', () => {
   lucide.createIcons();
 
-  // Nav scroll state
+  // ===== Theme (dark/light) =====
+  const root = document.documentElement;
+  const storedTheme = localStorage.getItem('theme');
+  const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+  const initialTheme = storedTheme || (prefersLight ? 'light' : 'dark');
+  if (initialTheme === 'light') root.setAttribute('data-theme', 'light');
+
+  function updateToggleIcons(theme){
+    document.querySelectorAll('.theme-toggle .knob').forEach(knob => {
+      knob.innerHTML = theme === 'light'
+        ? '<i data-lucide="sun" class="w-3.5 h-3.5"></i>'
+        : '<i data-lucide="moon" class="w-3.5 h-3.5"></i>';
+    });
+    lucide.createIcons();
+  }
+  updateToggleIcons(initialTheme);
+
+  document.querySelectorAll('.theme-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const isLight = root.getAttribute('data-theme') === 'light';
+      const next = isLight ? 'dark' : 'light';
+      if (next === 'light') root.setAttribute('data-theme', 'light');
+      else root.removeAttribute('data-theme');
+      localStorage.setItem('theme', next);
+      updateToggleIcons(next);
+    });
+  });
+
+  // ===== Nav scroll state =====
   const navbar = document.getElementById('navbar');
   if (navbar) {
     window.addEventListener('scroll', () => {
@@ -9,7 +37,28 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Mobile menu
+  // ===== Scroll progress bar =====
+  const progressBar = document.getElementById('scrollProgress');
+  if (progressBar) {
+    window.addEventListener('scroll', () => {
+      const h = document.documentElement;
+      const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+      progressBar.style.width = scrolled + '%';
+    });
+  }
+
+  // ===== Cursor glow (desktop only) =====
+  const cursorGlow = document.getElementById('cursorGlow');
+  if (cursorGlow && window.matchMedia('(hover: hover)').matches) {
+    window.addEventListener('mousemove', (e) => {
+      cursorGlow.style.left = e.clientX + 'px';
+      cursorGlow.style.top = e.clientY + 'px';
+      cursorGlow.classList.add('active');
+    });
+    document.addEventListener('mouseleave', () => cursorGlow.classList.remove('active'));
+  }
+
+  // ===== Mobile menu =====
   const menuBtn = document.getElementById('menuBtn');
   const mobileMenu = document.getElementById('mobileMenu');
   if (menuBtn && mobileMenu) {
@@ -22,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Typewriter (home page only)
+  // ===== Typewriter (home page only) =====
   const roles = ["Front-End Developer", "WordPress Builder", "UI/UX Enthusiast", "Problem Solver"];
   const el = document.getElementById('typewriter');
   if (el) {
@@ -50,8 +99,8 @@ document.addEventListener('DOMContentLoaded', () => {
     typeLoop();
   }
 
-  // Scroll reveal
-  const revealEls = document.querySelectorAll('.reveal');
+  // ===== Scroll reveal (supports .reveal, .reveal-left, .reveal-right, .reveal-scale) =====
+  const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
   const io = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if(entry.isIntersecting){
@@ -62,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { threshold: 0.15 });
   revealEls.forEach(el => io.observe(el));
 
-  // Skill bar fill on view
+  // ===== Skill bar fill on view =====
   const skillBars = document.querySelectorAll('.skill-fill');
   const skillIO = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -74,7 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { threshold: 0.4 });
   skillBars.forEach(b => skillIO.observe(b));
 
-  // Counter animation
+  // ===== Counter animation =====
   const counters = document.querySelectorAll('[data-counter]');
   const counterIO = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -98,7 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { threshold: 0.5 });
   counters.forEach(c => counterIO.observe(c));
 
-  // Contact form (contact page only) — no backend, so show a friendly confirmation
+  // ===== Contact form (contact page only) — no backend, so show a friendly confirmation =====
   const contactForm = document.getElementById('contactForm');
   const formMessage = document.getElementById('formMessage');
   if (contactForm && formMessage) {
@@ -109,7 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Footer year
+  // ===== Footer year =====
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 });
